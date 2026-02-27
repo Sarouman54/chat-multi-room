@@ -1,0 +1,76 @@
+<!-- client/index.html -->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat Multi-Room</title>
+
+	<style>
+		body {
+			font-family: sans-serif;
+			padding: 20px;
+			max-width: 600px;
+			margin: auto;
+		}
+
+		#chat-box {
+			height: 300px;
+			border: 1px solid #ccc;
+			padding: 10px;
+			overflow-y: scroll;
+			margin-bottom: 10px;
+			background: #f9f9f9;
+		}
+
+		.message {
+			margin-bottom: 5px;
+			padding: 5px;
+			border-bottom: 1px solid #eee;
+		}
+
+		.controls {
+			display: flex;
+			gap: 10px;
+			margin-bottom: 20px;
+		}
+
+		input[type="text"] {
+			flex-grow: 1;
+			padding: 10px;
+		}
+
+		button {
+			padding: 10px 20px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Chat Multi-Room</h1>
+
+	<div class="controls">
+		<label for="roomSelect">Choisir une room :</label>
+		<select id="roomSelect">
+			<option value="room1">Room 1</option>
+			<option value="room2">Room 2</option>
+			<option value="room3">Room 3</option>
+		</select>
+		<button id="joinBtn">Rejoindre</button>
+	</div>
+
+	<div id="chat" class="chat-box"></div>
+
+	<div class="controls">
+		<input type="text" id="messageInput" placeholder="Tapez votre message ici...">
+		<button id="sendBtn">Envoyer</button>
+	</div>
+
+	<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+	<script src="./app.js"></script>
+</body>
+
+</html>
