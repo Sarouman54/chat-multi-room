@@ -21,6 +21,7 @@ socket.on('receive_message', (data) => {
 
 joinBtn.addEventListener('click', () => {
 	currentRoom = roomSelect.value;
+	chat.innerHTML = '';
 	socket.emit('join_room', { room: currentRoom });
 });
 

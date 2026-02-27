@@ -17,8 +17,15 @@ io.on('connection', (socket) => {
 	socket.emit('receive_message', { msg: "Bienvenue dans le chat !" });
 
 	socket.on('join_room', (data) => {
+		socket.rooms.forEach(room => {
+			if (room !== socket.id) {
+				socket.leave(room);
+			}
+		});
 		socket.join(data.room);
 		console.log(`Client ${socket.id} a rejoint la salle ${data.room}`);
+
+		socket.emit('receive_message', { msg: `Vous avez rejoint la salle ${data.room}` });
 	});
 
 	socket.on('send_message', (data) => {
